@@ -1,27 +1,24 @@
 using NodeCanvas.Framework;
-using NodeCanvas.Tasks.Actions;
 using ParadoxNotion.Design;
-using TMPro;
 using UnityEngine;
 
 
-namespace NodeCanvas.Tasks.Conditions {
+namespace NodeCanvas.Tasks.Actions {
 
-	public class KeyCheckerCT : ConditionTask {
+	public class ToggleDoor : ActionTask {
 
         DoorScript DoorScript;
-        
 
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
-        protected override string OnInit(){
+        protected override string OnInit() {
 			return null;
 		}
 
-        //Called whenever the condition gets enabled.
-        protected override void OnEnable()
-        {
-            //get the scripts
+		//This is called once each time the task is enabled.
+		//Call EndAction() to mark the action as finished, either in success or failure.
+		//EndAction can be called from anywhere.
+		protected override void OnExecute() {
             DoorScript = GameObject.Find("Door").GetComponent<DoorScript>();
             if (DoorScript = GameObject.Find("Door").GetComponent<DoorScript>())
             {
@@ -31,17 +28,27 @@ namespace NodeCanvas.Tasks.Conditions {
             {
                 Debug.LogError("DIDNT GET SCRIPT");
             }
+		}
 
-        }
-        //Called whenever the condition gets disabled.
-        protected override void OnDisable() {
-            DoorScript.doorToggle = true;
+		//Called once per frame while the action is active.
+		protected override void OnUpdate() {
+
+            doorToggle();
         }
 
-		//Called once per frame while the condition is active.
-		//Return whether the condition is success or failure.
-		protected override bool OnCheck() {
-            Debug.Log("door");
+		//Called when the task is disabled.
+		protected override void OnStop() {
+			
+		}
+
+		//Called when the task is paused.
+		protected override void OnPause() {
+			
+		}
+
+
+		private void doorToggle()
+		{
             if (Input.GetKeyDown(KeyCode.C))
             {
                 DoorScript.DoorToggle();
@@ -50,6 +57,7 @@ namespace NodeCanvas.Tasks.Conditions {
                     //closes door and set toggle to false
                     DoorScript.doorStatus = false;
                     DoorScript.doorToggle = false;
+                    
                 }
                 else if (DoorScript.doorStatus == false)
                 {
@@ -57,11 +65,13 @@ namespace NodeCanvas.Tasks.Conditions {
                     DoorScript.doorStatus = true;
                     DoorScript.doorToggle = false;
                 }
-                //set UI to not ready
-
-                return true;
+                EndAction(true);
+                
             }
-            return false;
+
+            
         }
+        
+    
 	}
 }

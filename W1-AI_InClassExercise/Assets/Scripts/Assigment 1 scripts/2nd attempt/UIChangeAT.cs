@@ -1,15 +1,17 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using TMPro;
 using UnityEngine;
 
 
 namespace NodeCanvas.Tasks.Actions {
 
-	public class ResetAT : ActionTask {
-
+	public class UIChangeAT : ActionTask {
+		TextMeshProUGUI textUI;
+		
 		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit() {
+        //Return null if init was successfull. Return an error string otherwise
+        protected override string OnInit() {
 			return null;
 		}
 
@@ -17,21 +19,18 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-            GameObject.Find("Light bulb").GetComponent<Renderer>().material.color = new Color(255, 0, 0);
-			Debug.Log("red");
+            textUI = GameObject.Find("Text").GetComponent<TextMeshProUGUI>();
             EndAction(true);
-		}
+        }
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-            
-
-        }
+			
+		}
 
 		//Called when the task is disabled.
 		protected override void OnStop() {
-            Debug.Log("green");
-            GameObject.Find("Light bulb").GetComponent<Renderer>().material.color = new Color(0, 255, 0);
+            textUI.text = "not ready";
         }
 
 		//Called when the task is paused.

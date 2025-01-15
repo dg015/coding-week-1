@@ -42,11 +42,7 @@ public class DoorScript : MonoBehaviour
             door.transform.transform.position = DoorPosition;
             //doorStatus = false;
         }
-        else
-        {
-            Debug.LogError("door not ready for toggle function");
 
-        }
 
 
     }
