@@ -20,6 +20,7 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
+			//get the reference to the UI text
             textUI = GameObject.Find("Text").GetComponent<TextMeshProUGUI>();
             EndAction(true);
 		}
@@ -32,6 +33,7 @@ namespace NodeCanvas.Tasks.Actions {
 		//Called when the task is disabled.
 		protected override void OnStop() {
             
+			//set text to not ready
             textUI.text = "not ready";
         }
 

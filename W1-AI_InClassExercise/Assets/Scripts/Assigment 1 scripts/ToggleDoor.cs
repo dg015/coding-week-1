@@ -19,13 +19,17 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
+            //get script for door script
             DoorScript = GameObject.Find("Door").GetComponent<DoorScript>();
+            //check if the script was retrivied
             if (DoorScript = GameObject.Find("Door").GetComponent<DoorScript>())
             {
+                //if got the script
                 Debug.Log("got script");
             }
             else
             {
+                //didnt get the script
                 Debug.LogError("DIDNT GET SCRIPT");
             }
 		}

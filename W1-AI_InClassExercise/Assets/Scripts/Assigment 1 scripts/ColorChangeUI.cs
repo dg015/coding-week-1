@@ -21,6 +21,7 @@ namespace NodeCanvas.Tasks.Actions {
 		protected override void OnExecute() {
 			//get material renderer reference
 			light = GameObject.Find("Light bulb").GetComponent<Renderer>();
+			//set it to red
 			light.material.color = new Color(255, 0, 0);
             EndAction(true);
 		}

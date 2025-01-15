@@ -8,23 +8,15 @@ public class DoorScript : MonoBehaviour
     //door toggle is variable to check if player can toggle (open/close) door
     public bool doorToggle = true;
     public bool doorStatus = false;
-    
 
 
-    //false = door closed 
-    //true = door open
+    /// <summary>
+    //  door status 
+    //  false = door closed 
+    // true = door open   
+    /// </summary>
+
     public GameObject door;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void DoorToggle()
     {
@@ -44,8 +36,5 @@ public class DoorScript : MonoBehaviour
             door.transform.transform.position = DoorPosition;
             //doorStatus = false;
         }
-
-
-
     }
 }
