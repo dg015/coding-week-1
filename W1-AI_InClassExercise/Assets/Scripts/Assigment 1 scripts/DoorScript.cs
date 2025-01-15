@@ -8,6 +8,8 @@ public class DoorScript : MonoBehaviour
     //door toggle is variable to check if player can toggle (open/close) door
     public bool doorToggle = true;
     public bool doorStatus = false;
+    
+
 
     //false = door closed 
     //true = door open
