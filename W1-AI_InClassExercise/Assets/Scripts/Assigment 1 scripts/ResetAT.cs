@@ -23,12 +23,13 @@ namespace NodeCanvas.Tasks.Actions {
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-			
-		}
+            GameObject.Find("Light bulb").GetComponent<Renderer>().material.color = new Color(0, 255, 0);
+
+        }
 
 		//Called when the task is disabled.
 		protected override void OnStop() {
-            GameObject.Find("Light bulb").GetComponent<Renderer>().material.color = new Color(0, 255, 0);
+            
         }
 
 		//Called when the task is paused.

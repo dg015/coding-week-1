@@ -1,6 +1,7 @@
 using NodeCanvas.Framework;
 using NodeCanvas.Tasks.Actions;
 using ParadoxNotion.Design;
+using TMPro;
 using UnityEngine;
 
 
@@ -9,6 +10,7 @@ namespace NodeCanvas.Tasks.Conditions {
 	public class KeyCheckerCT : ConditionTask {
 
         DoorScript DoorScript;
+        TextMeshProUGUI textUI;
 
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
@@ -57,6 +59,8 @@ namespace NodeCanvas.Tasks.Conditions {
                 }
                 //change colour of lamp
                 GameObject.Find("Light bulb").GetComponent<Renderer>().material.color = new Color(255, 0, 0);
+                textUI = GameObject.Find("Text").GetComponent<TextMeshProUGUI>();
+                textUI.text = "not ready";
                 return true;
             }
             return false;
